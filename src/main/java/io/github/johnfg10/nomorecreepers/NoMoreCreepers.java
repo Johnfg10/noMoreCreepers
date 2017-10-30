@@ -26,14 +26,8 @@ import org.spongepowered.api.text.format.TextStyles;
 )
 public class NoMoreCreepers {
     @Listener
-    public void onEntitySpawnEvent(SpawnEntityEvent event){
-        for (Entity entity : event.getEntities()) {
-            if (entity.getType().equals(EntityTypes.CREEPER)){
-                if (entity instanceof Creeper){
-                    Creeper creeper = (Creeper) entity;
-                    creeper.explosionRadius().setTo(0);
-                }
-            }
-        }
+    public void antiexplosion(ChangeBlockEvent e) {
+        if (e.getCause().containsType(Creeper.class))
+            e.setCancelled(true);
     }
 }
