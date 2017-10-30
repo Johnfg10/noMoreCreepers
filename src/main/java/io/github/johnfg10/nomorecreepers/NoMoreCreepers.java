@@ -30,7 +30,6 @@ public class NoMoreCreepers {
         for (Entity entity : event.getEntities()) {
             if (entity.getType().equals(EntityTypes.CREEPER)){
                 if (entity instanceof Creeper){
-                    System.out.println("creeper located");
                     Creeper creeper = (Creeper) entity;
                     creeper.explosionRadius().setTo(0);
                 }
